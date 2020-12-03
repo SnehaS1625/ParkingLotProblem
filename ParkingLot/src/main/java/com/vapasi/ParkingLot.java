@@ -1,6 +1,8 @@
 package com.vapasi;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ParkingLot {
@@ -11,10 +13,11 @@ public class ParkingLot {
     private Owner owner;
     private boolean isLotFull;
 
+    List<Person> relatedPersons = new ArrayList<>();
     Map<Object, Object> parkingSlots = new HashMap<>();
 
-    public ParkingLot(Owner owner)  {
-        this.owner = owner;
+    public ParkingLot(List<Person> relatedPersons)  {
+        this.relatedPersons = relatedPersons;
     }
 
     public Object park(Object car) {
@@ -23,7 +26,7 @@ public class ParkingLot {
         Object token = new Object();
         parkingSlots.put(token, car);
         if(isFull().equals(fullSign))
-            owner.notifyParkingLotStatus(fullSign);
+        relatedPersons.stream().forEach(i -> i.notifyParkingLotStatus(fullSign));
         return token;
     }
 

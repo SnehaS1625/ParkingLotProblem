@@ -1,14 +1,9 @@
 package com.vapasi;
 
-public class Owner {
+public class Owner extends Person {
 
-     Sign parkingStatus = Sign.generateNotFullSign();
-
-    public void notifyParkingLotStatus(Sign parkingStatus) {
-        this.parkingStatus = parkingStatus;
+    public Owner(){
+        super();
     }
 
-    public Sign parkingStatus() {
-        return parkingStatus;
-    }
 }

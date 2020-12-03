@@ -28,7 +28,7 @@ public class Sign {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(isFull);
+    public String toString() {
+        return "Parking Status :" +isFull;
     }
 }

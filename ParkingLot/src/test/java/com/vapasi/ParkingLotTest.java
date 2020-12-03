@@ -3,6 +3,10 @@ package com.vapasi;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,12 +18,12 @@ public class ParkingLotTest {
     private Object thirdCar = new Object();
     private Object firstToken;
     private Object secondToken;
-    private static Owner owner;
+    List<Person> relatedPerson = new ArrayList<>();
 
     @BeforeEach
     public void setup() {
-        owner = new Owner();
-        parkingLot = new ParkingLot(owner);
+        parkingLot = new ParkingLot(relatedPerson);
+
     }
 
     @Test
@@ -54,16 +58,67 @@ public class ParkingLotTest {
 
     @Test
     public void shouldReturnSignForOwnerWhenParkingIsFull() {
-        parkingLot = new ParkingLot(owner);
+        Person owner = new Owner();
+        relatedPerson.add(owner);
+        parkingLot = new ParkingLot(relatedPerson);
+
         parkingLot.park(firstCar);
         parkingLot.park(secondCar);
-        Sign parkingSign = owner.parkingStatus();
+
+        Sign parkingSign = owner.parkingStatus;
         Sign fullSign = Sign.generateFullSign();
         assertEquals(fullSign,parkingSign);
     }
 
+    @Test
+    public void shouldReturnSignForAttenderWhenParkingIsFull() {
+        Person attender = new Attender();
+        relatedPerson.add(attender);
+        parkingLot = new ParkingLot(relatedPerson);
 
+        parkingLot.park(firstCar);
+        parkingLot.park(secondCar);
 
+        Sign parkingSign = attender.parkingStatus;
+        Sign fullSign = Sign.generateFullSign();
+        assertEquals(fullSign,parkingSign);
+    }
 
+    @Test
+    public void shouldReturnSignForOwnerAndAttenderWhenParkingIsFull() {
+        Person owner = new Owner();
+        Person attender = new Attender();
+        relatedPerson.add(attender);
+        relatedPerson.add(owner);
+        parkingLot = new ParkingLot(relatedPerson);
+
+        parkingLot.park(firstCar);
+        parkingLot.park(secondCar);
+        Sign fullSign = Sign.generateFullSign();
+
+        Sign parkingSign = owner.parkingStatus;
+        assertEquals(fullSign,parkingSign);
+
+        parkingSign = attender.parkingStatus;
+        assertEquals(fullSign,parkingSign);
+    }
+
+    @Test
+    public void shouldNotReturnSignForOwnerAndAttenderWhenParkingIsFull() {
+        Person owner = new Owner();
+        Person attender = new Attender();
+        relatedPerson.add(attender);
+        relatedPerson.add(owner);
+        parkingLot = new ParkingLot(relatedPerson);
+
+        parkingLot.park(firstCar);
+        Sign fullSign = Sign.generateFullSign();
+
+        Sign parkingSign = owner.parkingStatus;
+        assertNotEquals(fullSign,parkingSign);
+
+        parkingSign = attender.parkingStatus;
+        assertNotEquals(fullSign,parkingSign);
+    }
 
 }
