@@ -50,29 +50,19 @@ public class ParkingLotTest {
         assertThrows(OutOfSpaceException.class , () -> parkingLot.park(thirdCar));
     }
 
-   /* @Test
-    public void shouldReturnSignWhenParkingIsFull() {
-        Sign parkingSign = parkingLot.isFull();
-        Sign fullSign = Sign.generateFullSign();
-        assertNotEquals(fullSign,parkingSign);
-
-        parkingLot.park(firstCar);
-        parkingSign = parkingLot.isFull();
-        assertNotEquals(fullSign,parkingSign);
-
-        parkingLot.park(secondCar);
-        parkingSign = parkingLot.isFull();
-        assertEquals(fullSign,parkingSign);
-
-        assertThrows(OutOfSpaceException.class , () -> parkingLot.park(thirdCar));
-    }*/
-
     @Test
-    public void shouldReturnSignWhenParkingIsFull() {
+    public void shouldReturnSignForOwnerWhenParkingIsFull() {
 
-
-
+        Owner owner = new Owner();
+        parkingLot = new ParkingLot(owner);
+        parkingLot.park(firstCar);
+        parkingLot.park(secondCar);
+        Sign parkingSign = owner.parkingStatus();
+        Sign fullSign = Sign.generateFullSign();
+        assertEquals(fullSign,parkingSign);
     }
+
+
 
 
 

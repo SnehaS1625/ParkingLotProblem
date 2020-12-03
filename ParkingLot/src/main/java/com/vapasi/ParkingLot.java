@@ -8,14 +8,26 @@ public class ParkingLot {
     private final int MAX_SIZE_OF_PARKINGLOT = 2;
     private Sign fullSign = Sign.generateFullSign();
     private Sign notFullSign = Sign.generateNotFullSign();
+    private Owner owner;
 
     Map<Object, Object> parkingSlots = new HashMap<>();
+
+    public ParkingLot(Owner owner)  {
+        this.owner = owner;
+    }
+
+    public ParkingLot()  {
+
+    }
+
 
     public Object park(Object car) {
         if(isFull().equals(fullSign))
             throw new OutOfSpaceException("Parking Lot Is Full");
         Object token = new Object();
         parkingSlots.put(token, car);
+        if(isFull().equals(fullSign))
+            owner.notifyParkingLotStatus(fullSign);
         return token;
     }
 
