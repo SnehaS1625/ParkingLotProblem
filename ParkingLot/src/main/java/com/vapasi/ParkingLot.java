@@ -9,17 +9,13 @@ public class ParkingLot {
     private Sign fullSign = Sign.generateFullSign();
     private Sign notFullSign = Sign.generateNotFullSign();
     private Owner owner;
+    private boolean isLotFull;
 
     Map<Object, Object> parkingSlots = new HashMap<>();
 
     public ParkingLot(Owner owner)  {
         this.owner = owner;
     }
-
-    public ParkingLot()  {
-
-    }
-
 
     public Object park(Object car) {
         if(isFull().equals(fullSign))

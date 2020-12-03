@@ -14,10 +14,12 @@ public class ParkingLotTest {
     private Object thirdCar = new Object();
     private Object firstToken;
     private Object secondToken;
+    private static Owner owner;
 
     @BeforeEach
     public void setup() {
-        parkingLot = new ParkingLot();
+        owner = new Owner();
+        parkingLot = new ParkingLot(owner);
     }
 
     @Test
@@ -52,8 +54,6 @@ public class ParkingLotTest {
 
     @Test
     public void shouldReturnSignForOwnerWhenParkingIsFull() {
-
-        Owner owner = new Owner();
         parkingLot = new ParkingLot(owner);
         parkingLot.park(firstCar);
         parkingLot.park(secondCar);

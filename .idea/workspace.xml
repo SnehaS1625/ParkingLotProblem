@@ -20,15 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b0dc898-2f07-4e0b-a2c8-f21fb1dfbedf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ParkingLot/src/main/java/com/vapasi/Owner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ParkingLot/src/main/java/com/vapasi/Sign.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ParkingLot/src/test/java/com/vapasi/OwnerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ParkingLot/src/test/java/com/vapasi/SignTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ParkingLot/src/main/java/com/vapasi/Owner.java" beforeDir="false" afterPath="$PROJECT_DIR$/ParkingLot/src/main/java/com/vapasi/Owner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ParkingLot/src/main/java/com/vapasi/ParkingLot.java" beforeDir="false" afterPath="$PROJECT_DIR$/ParkingLot/src/main/java/com/vapasi/ParkingLot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ParkingLot/src/test/java/com/vapasi/ParkingLotTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ParkingLot/src/test/java/com/vapasi/ParkingLotTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ParkingLot/com/vapasi/ParkingLot.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ParkingLot/com/vapasi/ParkingLot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/ParkingLot/com/vapasi/ParkingLotTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/ParkingLot/com/vapasi/ParkingLotTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +61,7 @@
       <recent name="com.vapasi" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SignTest.shouldReturnNotEqualIfTwoObjectsAreDifferent">
+  <component name="RunManager" selected="JUnit.ParkingLotTest">
     <configuration name="ParkingLotTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ParkingLot" />
       <extension name="coverage">
@@ -148,10 +143,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ParkingLotTest" />
         <item itemvalue="JUnit.SignTest.shouldReturnNotEqualIfTwoObjectsAreDifferent" />
         <item itemvalue="JUnit.SignTest.shouldReturnFalseIfOneObjectIsFalse" />
         <item itemvalue="JUnit.ParkingLotTest.shouldReturnSignWhenParkingIsFull" />
-        <item itemvalue="JUnit.ParkingLotTest" />
         <item itemvalue="JUnit.ParkingLotTest.shouldThrowExceptionWhenUnParkUsedInvalidToken" />
       </list>
     </recent_temporary>
