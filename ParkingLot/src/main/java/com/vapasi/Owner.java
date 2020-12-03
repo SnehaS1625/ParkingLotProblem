@@ -1,9 +1,15 @@
 package com.vapasi;
 
-public class Owner extends Person {
+public class Owner implements Collaborator {
 
-    public Owner(){
-        super();
+    private boolean isNotified = false;
+
+    @Override
+    public void notifyParkingStatus() {
+        this.isNotified = true;
     }
 
+    public boolean isNotified() {
+        return isNotified;
+    }
 }

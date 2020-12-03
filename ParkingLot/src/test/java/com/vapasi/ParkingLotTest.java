@@ -1,9 +1,7 @@
 package com.vapasi;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +11,12 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ParkingLotTest {
 
     private static ParkingLot parkingLot;
+    List<Collaborator> relatedPerson = new ArrayList<>();
     private Object firstCar = new Object();
     private Object secondCar = new Object();
     private Object thirdCar = new Object();
     private Object firstToken;
     private Object secondToken;
-    List<Person> relatedPerson = new ArrayList<>();
 
     @BeforeEach
     public void setup() {
@@ -46,79 +44,75 @@ public class ParkingLotTest {
     public void shouldThrowExceptionWhenUnParkUsedInvalidToken() {
         firstToken = parkingLot.park(firstCar);
 
-        assertThrows(InvalidTokenException.class , () -> parkingLot.unPark(secondToken));
+        assertThrows(InvalidTokenException.class, () -> parkingLot.unPark(secondToken));
     }
 
     @Test
-    public void shouldThrowOutOfSpaceExceptionWhenParkingLotIsFull(){
+    public void shouldThrowOutOfSpaceExceptionWhenParkingLotIsFull() {
         firstToken = parkingLot.park(firstCar);
         secondToken = parkingLot.park(secondCar);
-        assertThrows(OutOfSpaceException.class , () -> parkingLot.park(thirdCar));
+        assertThrows(OutOfSpaceException.class, () -> parkingLot.park(thirdCar));
     }
 
     @Test
     public void shouldReturnSignForOwnerWhenParkingIsFull() {
-        Person owner = new Owner();
+        Collaborator owner = new Owner();
         relatedPerson.add(owner);
         parkingLot = new ParkingLot(relatedPerson);
 
         parkingLot.park(firstCar);
         parkingLot.park(secondCar);
 
-        Sign parkingSign = owner.parkingStatus;
-        Sign fullSign = Sign.generateFullSign();
-        assertEquals(fullSign,parkingSign);
+        boolean parkingSign = owner.isNotified();
+        assertTrue(parkingSign);
     }
 
     @Test
     public void shouldReturnSignForAttenderWhenParkingIsFull() {
-        Person attender = new Attender();
+        Collaborator attender = new Attender();
         relatedPerson.add(attender);
         parkingLot = new ParkingLot(relatedPerson);
 
         parkingLot.park(firstCar);
         parkingLot.park(secondCar);
 
-        Sign parkingSign = attender.parkingStatus;
-        Sign fullSign = Sign.generateFullSign();
-        assertEquals(fullSign,parkingSign);
+        boolean parkingSign = attender.isNotified();
+        assertTrue(parkingSign);
     }
 
     @Test
     public void shouldReturnSignForOwnerAndAttenderWhenParkingIsFull() {
-        Person owner = new Owner();
-        Person attender = new Attender();
+        Collaborator owner = new Owner();
+        Collaborator attender = new Attender();
         relatedPerson.add(attender);
         relatedPerson.add(owner);
         parkingLot = new ParkingLot(relatedPerson);
 
         parkingLot.park(firstCar);
         parkingLot.park(secondCar);
-        Sign fullSign = Sign.generateFullSign();
 
-        Sign parkingSign = owner.parkingStatus;
-        assertEquals(fullSign,parkingSign);
+        boolean parkingSign = owner.isNotified();
+        assertTrue(parkingSign);
 
-        parkingSign = attender.parkingStatus;
-        assertEquals(fullSign,parkingSign);
+        parkingSign = attender.isNotified();
+        assertTrue(parkingSign);
     }
 
     @Test
     public void shouldNotReturnSignForOwnerAndAttenderWhenParkingIsFull() {
-        Person owner = new Owner();
-        Person attender = new Attender();
+        Collaborator owner = new Owner();
+        Collaborator attender = new Attender();
         relatedPerson.add(attender);
         relatedPerson.add(owner);
         parkingLot = new ParkingLot(relatedPerson);
 
         parkingLot.park(firstCar);
-        Sign fullSign = Sign.generateFullSign();
 
-        Sign parkingSign = owner.parkingStatus;
-        assertNotEquals(fullSign,parkingSign);
+        boolean parkingSign = owner.isNotified();
+        assertFalse(parkingSign);
 
-        parkingSign = attender.parkingStatus;
-        assertNotEquals(fullSign,parkingSign);
+        parkingSign = attender.isNotified();
+        assertFalse(parkingSign);
     }
 
 }
