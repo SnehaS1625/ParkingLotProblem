@@ -5,12 +5,12 @@ import java.util.Map;
 
 public class ParkingLot {
 
-    private static int MAX_SIZE_OF_PARKINGLOT = 2;
+    private final int MAX_SIZE_OF_PARKINGLOT = 2;
 
-    static Map<Object, Object> parkingSlots = new HashMap<>();
+    Map<Object, Object> parkingSlots = new HashMap<>();
 
     public Object park(Object car) {
-        if(parkingSlots.size() == MAX_SIZE_OF_PARKINGLOT)
+        if(isFull())
             throw new OutOfSpaceException("Parking Lot Is Full");
         Object token = new Object();
         parkingSlots.put(token, car);
@@ -30,4 +30,9 @@ public class ParkingLot {
         return car;
     }
 
+    public boolean isFull() {
+        if(parkingSlots.size() == MAX_SIZE_OF_PARKINGLOT)
+            return true;
+        return false;
+    }
 }

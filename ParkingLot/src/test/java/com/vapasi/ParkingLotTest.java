@@ -1,6 +1,7 @@
 package com.vapasi;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,8 +15,8 @@ public class ParkingLotTest {
     private Object firstToken;
     private Object secondToken;
 
-    @BeforeAll
-    public static void setup() {
+    @BeforeEach
+    public void setup() {
         parkingLot = new ParkingLot();
     }
 
@@ -46,7 +47,19 @@ public class ParkingLotTest {
     public void shouldThrowOutOfSpaceExceptionWhenParkingLotIsFull(){
         firstToken = parkingLot.park(firstCar);
         secondToken = parkingLot.park(secondCar);
+        assertThrows(OutOfSpaceException.class , () -> parkingLot.park(thirdCar));
+    }
 
+    @Test
+    public void shouldReturnSignWhenParkingIsFull() {
+        boolean isParkingFull = parkingLot.isFull();
+        assertFalse(isParkingFull);
+        parkingLot.park(firstCar);
+        isParkingFull = parkingLot.isFull();
+        assertFalse(isParkingFull);
+        parkingLot.park(secondCar);
+        isParkingFull = parkingLot.isFull();
+        assertTrue(isParkingFull);
         assertThrows(OutOfSpaceException.class , () -> parkingLot.park(thirdCar));
     }
 
