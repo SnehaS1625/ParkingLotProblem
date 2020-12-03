@@ -63,7 +63,7 @@ public class ParkingLotTest {
         parkingLot.park(firstCar);
         parkingLot.park(secondCar);
 
-        boolean parkingSign = owner.isNotified();
+        boolean parkingSign = owner.isNotifiedForParkingFull();
         assertTrue(parkingSign);
     }
 
@@ -76,7 +76,7 @@ public class ParkingLotTest {
         parkingLot.park(firstCar);
         parkingLot.park(secondCar);
 
-        boolean parkingSign = attender.isNotified();
+        boolean parkingSign = attender.isNotifiedForParkingFull();
         assertTrue(parkingSign);
     }
 
@@ -91,10 +91,10 @@ public class ParkingLotTest {
         parkingLot.park(firstCar);
         parkingLot.park(secondCar);
 
-        boolean parkingSign = owner.isNotified();
+        boolean parkingSign = owner.isNotifiedForParkingFull();
         assertTrue(parkingSign);
 
-        parkingSign = attender.isNotified();
+        parkingSign = attender.isNotifiedForParkingFull();
         assertTrue(parkingSign);
     }
 
@@ -108,11 +108,31 @@ public class ParkingLotTest {
 
         parkingLot.park(firstCar);
 
-        boolean parkingSign = owner.isNotified();
+        boolean parkingSign = owner.isNotifiedForParkingFull();
         assertFalse(parkingSign);
 
-        parkingSign = attender.isNotified();
+        parkingSign = attender.isNotifiedForParkingFull();
         assertFalse(parkingSign);
+    }
+
+    @Test
+    public void shouldNotifyWhenParkingIsAvailable() {
+        Collaborator owner = new Owner();
+        Collaborator attender = new Attender();
+        relatedPerson.add(attender);
+        relatedPerson.add(owner);
+        parkingLot = new ParkingLot(relatedPerson);
+
+        firstToken = parkingLot.park(firstCar);
+        secondToken = parkingLot.park(secondCar);
+
+        boolean parkingSign = owner.isNotifiedForParkingFull();
+        assertTrue(parkingSign);
+        parkingLot.unPark(firstToken);
+
+        parkingSign = ((Owner) owner).isNotifiedForParkingAvailable();
+        assertTrue(parkingSign);
+
     }
 
 }

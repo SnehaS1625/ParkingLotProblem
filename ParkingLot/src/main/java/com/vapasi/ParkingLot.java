@@ -25,7 +25,7 @@ public class ParkingLot {
         Object token = new Object();
         parkingSlots.put(token, car);
         if (isFull())
-            relatedPersons.stream().forEach(collaborator -> collaborator.notifyParkingStatus());
+            relatedPersons.stream().forEach(collaborator -> collaborator.notifyParkingFullStatus());
         return token;
     }
 
@@ -39,6 +39,10 @@ public class ParkingLot {
         }
         Object car = parkingSlots.get(token);
         parkingSlots.remove(token);
+        relatedPersons.stream().filter(i -> i.getClass() == Owner.class).forEach(i -> {
+            Owner j = (Owner) i;
+            j.notifyParkingAvailable();
+        });
         return car;
     }
 

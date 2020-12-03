@@ -16,8 +16,8 @@ public class OwnerTest {
 
     @Test
     public void shouldReturnNotificationToOwner() {
-        owner.notifyParkingStatus();
-        assertTrue(owner.isNotified());
+        owner.notifyParkingFullStatus();
+        assertTrue(owner.isNotifiedForParkingFull());
 
     }
 

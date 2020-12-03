@@ -2,8 +2,8 @@ package com.vapasi;
 
 public interface Collaborator {
 
-    public void notifyParkingStatus();
+    public void notifyParkingFullStatus();
 
-    public boolean isNotified();
+    public boolean isNotifiedForParkingFull();
 
 }

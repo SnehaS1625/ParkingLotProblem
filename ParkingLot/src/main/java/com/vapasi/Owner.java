@@ -2,14 +2,22 @@ package com.vapasi;
 
 public class Owner implements Collaborator {
 
-    private boolean isNotified = false;
+    private boolean isNotifiedParkingFull = false;
 
     @Override
-    public void notifyParkingStatus() {
-        this.isNotified = true;
+    public void notifyParkingFullStatus() {
+        this.isNotifiedParkingFull = true;
     }
 
-    public boolean isNotified() {
-        return isNotified;
+    public void notifyParkingAvailable() {
+        isNotifiedParkingFull = false;
+    }
+
+    public boolean isNotifiedForParkingFull() {
+        return isNotifiedParkingFull;
+    }
+
+    public boolean isNotifiedForParkingAvailable() {
+        return !isNotifiedParkingFull;
     }
 }
