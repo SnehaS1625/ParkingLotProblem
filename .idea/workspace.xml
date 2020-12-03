@@ -20,7 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b0dc898-2f07-4e0b-a2c8-f21fb1dfbedf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ParkingLot/src/main/java/com/vapasi/InvalidTokenException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ParkingLot/src/main/java/com/vapasi/Owner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ParkingLot/src/main/java/com/vapasi/Sign.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ParkingLot/src/test/java/com/vapasi/OwnerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ParkingLot/src/test/java/com/vapasi/SignTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ParkingLot/src/main/java/com/vapasi/ParkingLot.java" beforeDir="false" afterPath="$PROJECT_DIR$/ParkingLot/src/main/java/com/vapasi/ParkingLot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ParkingLot/src/test/java/com/vapasi/ParkingLotTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ParkingLot/src/test/java/com/vapasi/ParkingLotTest.java" afterDir="false" />
@@ -56,14 +59,14 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Error/error-handling" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.vapasi" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Users\priyankadayama18\IdeaProjects\ParkingLot" />
     </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.vapasi" />
+    </key>
   </component>
-  <component name="RunManager" selected="JUnit.ParkingLotTest.shouldThrowExceptionWhenUnParkUsedInvalidToken">
+  <component name="RunManager" selected="JUnit.SignTest.shouldReturnNotEqualIfTwoObjectsAreDifferent">
     <configuration name="ParkingLotTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ParkingLot" />
       <extension name="coverage">
@@ -79,7 +82,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ParkingLotTest.shouldParkMyCar" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ParkingLotTest.shouldReturnSignWhenParkingIsFull" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ParkingLot" />
       <extension name="coverage">
         <pattern>
@@ -89,7 +92,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.vapasi" />
       <option name="MAIN_CLASS_NAME" value="com.vapasi.ParkingLotTest" />
-      <option name="METHOD_NAME" value="shouldParkMyCar" />
+      <option name="METHOD_NAME" value="shouldReturnSignWhenParkingIsFull" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -111,11 +114,45 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SignTest.shouldReturnFalseIfOneObjectIsFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ParkingLot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.vapasi.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.vapasi" />
+      <option name="MAIN_CLASS_NAME" value="com.vapasi.SignTest" />
+      <option name="METHOD_NAME" value="shouldReturnFalseIfOneObjectIsFalse" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SignTest.shouldReturnNotEqualIfTwoObjectsAreDifferent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ParkingLot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.vapasi.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.vapasi" />
+      <option name="MAIN_CLASS_NAME" value="com.vapasi.SignTest" />
+      <option name="METHOD_NAME" value="shouldReturnNotEqualIfTwoObjectsAreDifferent" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ParkingLotTest.shouldThrowExceptionWhenUnParkUsedInvalidToken" />
+        <item itemvalue="JUnit.SignTest.shouldReturnNotEqualIfTwoObjectsAreDifferent" />
+        <item itemvalue="JUnit.SignTest.shouldReturnFalseIfOneObjectIsFalse" />
+        <item itemvalue="JUnit.ParkingLotTest.shouldReturnSignWhenParkingIsFull" />
         <item itemvalue="JUnit.ParkingLotTest" />
-        <item itemvalue="JUnit.ParkingLotTest.shouldParkMyCar" />
+        <item itemvalue="JUnit.ParkingLotTest.shouldThrowExceptionWhenUnParkUsedInvalidToken" />
       </list>
     </recent_temporary>
   </component>
@@ -140,6 +177,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="488" y="35" key="#com.intellij.ide.util.MemberChooser" timestamp="1606894967683">
@@ -150,22 +188,26 @@
       <screen x="0" y="0" width="1366" height="640" />
     </state>
     <state x="463" y="74" key="FileChooserDialogImpl/0.0.1366.640@0.0.1366.640" timestamp="1606909084843" />
-    <state width="1323" height="339" key="GridCell.Tab.0.bottom" timestamp="1606908759750">
-      <screen x="0" y="0" width="1366" height="640" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1606978540654">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="339" key="GridCell.Tab.0.bottom/0.0.1366.640@0.0.1366.640" timestamp="1606908759750" />
-    <state width="1323" height="339" key="GridCell.Tab.0.center" timestamp="1606908759750">
-      <screen x="0" y="0" width="1366" height="640" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606978540654" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1606978540653">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="339" key="GridCell.Tab.0.center/0.0.1366.640@0.0.1366.640" timestamp="1606908759750" />
-    <state width="1323" height="339" key="GridCell.Tab.0.left" timestamp="1606908759750">
-      <screen x="0" y="0" width="1366" height="640" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606978540653" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1606978540653">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="339" key="GridCell.Tab.0.left/0.0.1366.640@0.0.1366.640" timestamp="1606908759750" />
-    <state width="1323" height="339" key="GridCell.Tab.0.right" timestamp="1606908759750">
-      <screen x="0" y="0" width="1366" height="640" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606978540653" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1606978540653">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="339" key="GridCell.Tab.0.right/0.0.1366.640@0.0.1366.640" timestamp="1606908759750" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606978540653" />
     <state x="387" y="211" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1606887988523">
       <screen x="0" y="0" width="1366" height="640" />
     </state>

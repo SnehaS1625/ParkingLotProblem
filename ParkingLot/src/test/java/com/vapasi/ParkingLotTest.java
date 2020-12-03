@@ -21,7 +21,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void shouldParkMyCarAndCheckIfItParkedOrNot() {
+    public void shouldParkMyCarAndCheckIfParkedOrNot() {
         firstToken = parkingLot.park(firstCar);
         assertTrue(parkingLot.isParked(firstCar));
     }
@@ -50,17 +50,30 @@ public class ParkingLotTest {
         assertThrows(OutOfSpaceException.class , () -> parkingLot.park(thirdCar));
     }
 
+   /* @Test
+    public void shouldReturnSignWhenParkingIsFull() {
+        Sign parkingSign = parkingLot.isFull();
+        Sign fullSign = Sign.generateFullSign();
+        assertNotEquals(fullSign,parkingSign);
+
+        parkingLot.park(firstCar);
+        parkingSign = parkingLot.isFull();
+        assertNotEquals(fullSign,parkingSign);
+
+        parkingLot.park(secondCar);
+        parkingSign = parkingLot.isFull();
+        assertEquals(fullSign,parkingSign);
+
+        assertThrows(OutOfSpaceException.class , () -> parkingLot.park(thirdCar));
+    }*/
+
     @Test
     public void shouldReturnSignWhenParkingIsFull() {
-        boolean isParkingFull = parkingLot.isFull();
-        assertFalse(isParkingFull);
-        parkingLot.park(firstCar);
-        isParkingFull = parkingLot.isFull();
-        assertFalse(isParkingFull);
-        parkingLot.park(secondCar);
-        isParkingFull = parkingLot.isFull();
-        assertTrue(isParkingFull);
-        assertThrows(OutOfSpaceException.class , () -> parkingLot.park(thirdCar));
+
+
+
     }
+
+
 
 }

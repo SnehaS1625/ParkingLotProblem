@@ -6,11 +6,13 @@ import java.util.Map;
 public class ParkingLot {
 
     private final int MAX_SIZE_OF_PARKINGLOT = 2;
+    private Sign fullSign = Sign.generateFullSign();
+    private Sign notFullSign = Sign.generateNotFullSign();
 
     Map<Object, Object> parkingSlots = new HashMap<>();
 
     public Object park(Object car) {
-        if(isFull())
+        if(isFull().equals(fullSign))
             throw new OutOfSpaceException("Parking Lot Is Full");
         Object token = new Object();
         parkingSlots.put(token, car);
@@ -30,9 +32,10 @@ public class ParkingLot {
         return car;
     }
 
-    public boolean isFull() {
+    public Sign isFull() {
         if(parkingSlots.size() == MAX_SIZE_OF_PARKINGLOT)
-            return true;
-        return false;
+            return fullSign;
+        return notFullSign;
     }
+
 }
