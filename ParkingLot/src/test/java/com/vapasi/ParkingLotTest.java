@@ -6,9 +6,13 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingLotTest {
-    static ParkingLot parkingLot;
-    static Car car = new Car("KA 1234");
-    private static Object token;
+
+    private static ParkingLot parkingLot;
+    private Object firstCar = new Object();
+    private Object secondCar = new Object();
+    private Object thirdCar = new Object();
+    private Object firstToken;
+    private Object secondToken;
 
     @BeforeAll
     public static void setup() {
@@ -17,24 +21,33 @@ public class ParkingLotTest {
 
     @Test
     public void shouldParkMyCarAndCheckIfItParkedOrNot() {
-        token = parkingLot.park(car);
-        assertTrue(parkingLot.isParked(car));
+        firstToken = parkingLot.park(firstCar);
+        assertTrue(parkingLot.isParked(firstCar));
     }
 
     @Test
     public void shouldUnParkMyCar() {
-        token = parkingLot.park(car);
-        Car unpackedCar = parkingLot.unPark(token);
+        firstToken = parkingLot.park(firstCar);
+
+        Object unpackedCar = parkingLot.unPark(firstToken);
+
         assertFalse(parkingLot.isParked(unpackedCar));
-        assertEquals(car, unpackedCar);
+
     }
 
     @Test
     public void shouldThrowExceptionWhenUnParkUsedInvalidToken() {
-        token = parkingLot.park(car);
-        token =null;
-        assertThrows(InvalidTokenException.class , () -> parkingLot.unPark(token));
+        firstToken = parkingLot.park(firstCar);
+
+        assertThrows(InvalidTokenException.class , () -> parkingLot.unPark(secondToken));
     }
 
+    @Test
+    public void shouldThrowOutOfSpaceExceptionWhenParkingLotIsFull(){
+        firstToken = parkingLot.park(firstCar);
+        secondToken = parkingLot.park(secondCar);
+
+        assertThrows(OutOfSpaceException.class , () -> parkingLot.park(thirdCar));
+    }
 
 }
