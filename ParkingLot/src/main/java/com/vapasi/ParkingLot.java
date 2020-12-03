@@ -26,7 +26,7 @@ public class ParkingLot {
         Object token = new Object();
         parkingSlots.put(token, car);
         if(isFull().equals(fullSign))
-        relatedPersons.stream().forEach(i -> i.notifyParkingLotStatus(fullSign));
+            relatedPersons.stream().forEach(person -> person.notifyParkingLotStatus(fullSign));
         return token;
     }
 
@@ -35,8 +35,8 @@ public class ParkingLot {
     }
 
     public Object unPark(Object token) {
-        if(token == null) {
-            throw new InvalidTokenException("Please enter valid exception");
+        if(!parkingSlots.containsKey(token)) {
+            throw new InvalidTokenException("Invalid token");
         }
         Object car = parkingSlots.get(token);
         parkingSlots.remove(token);
