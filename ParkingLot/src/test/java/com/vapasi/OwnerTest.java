@@ -1,6 +1,7 @@
 package com.vapasi;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,9 +14,10 @@ public class OwnerTest {
         owner = new Owner();
     }
 
+    @Test
     public void shouldReturnNotificationToOwner() {
-    boolean flag = owner.notifyIfParkingFull(true);
-    assertTrue(flag);
+    owner.notifyParkingLotStatus(Sign.generateFullSign());
+    assertEquals(Sign.generateFullSign(), owner.parkingStatus());
 
     }
 

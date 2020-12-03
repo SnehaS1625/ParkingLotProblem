@@ -2,9 +2,13 @@ package com.vapasi;
 
 public class Owner {
 
-     Sign sign = Sign.generateNotFullSign();
+     Sign parkingStatus = Sign.generateNotFullSign();
 
-    public void notifyIfParkingFull(Sign isPakingFull) {
+    public void notifyParkingLotStatus(Sign parkingStatus) {
+        this.parkingStatus = parkingStatus;
+    }
 
+    public Sign parkingStatus() {
+        return parkingStatus;
     }
 }
