@@ -39,12 +39,28 @@ public class ParkingLot {
         }
         Object car = parkingSlots.get(token);
         parkingSlots.remove(token);
-        relatedPersons.stream().filter(i -> i.getClass() == Owner.class).forEach(i -> {
-            Owner j = (Owner) i;
-            j.notifyParkingAvailable();
-        });
+        notifyWhenParkingLotStatusChanged();
         return car;
     }
+
+    private void notifyWhenParkingLotStatusChanged(){
+        if (parkingSlots.size() == MAX_SIZE_OF_PARKINGLOT-1){
+            relatedPersons.stream().filter(i -> i.getClass() == Owner.class).forEach(i -> {
+                Owner j = (Owner) i;
+                j.notifyParkingAvailable();
+            });
+        }
+    }
+
+
+
+
+
+
+
+
+
+
 
     public boolean isFull() {
         if (parkingSlots.size() == MAX_SIZE_OF_PARKINGLOT)
