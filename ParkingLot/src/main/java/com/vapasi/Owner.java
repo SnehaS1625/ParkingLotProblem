@@ -3,14 +3,14 @@ package com.vapasi;
 public class Owner implements Collaborator {
 
     private boolean isNotifiedParkingFull = false;
-
+    private boolean isNotifiedParkingAvailable = false;
     @Override
     public void notifyParkingFullStatus() {
         this.isNotifiedParkingFull = true;
     }
 
     public void notifyParkingAvailable() {
-        isNotifiedParkingFull = false;
+        isNotifiedParkingAvailable = true;
     }
 
     public boolean isNotifiedForParkingFull() {
@@ -18,6 +18,6 @@ public class Owner implements Collaborator {
     }
 
     public boolean isNotifiedForParkingAvailable() {
-        return !isNotifiedParkingFull;
+        return isNotifiedParkingAvailable;
     }
 }
